@@ -16,7 +16,7 @@ const Usuario = sequelize.define("Usuario", {
   password: {
     type: DataTypes.STRING,
   },
-});
-// Usuario.sync({force: true})
+})
+Usuario.sync({ force: true })
 
-module.exports = Usuario;
+module.exports = Usuario

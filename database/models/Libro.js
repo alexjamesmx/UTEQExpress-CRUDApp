@@ -1,24 +1,24 @@
-const sequelize = require('../db')
-const { DataTypes } = require('sequelize');
+const sequelize = require("../db")
+const { DataTypes } = require("sequelize")
 
-const Libro = sequelize.define('libros', {
+const Libro = sequelize.define("libros", {
   titulo_lib: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   },
   anio_lib: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   autor_lib: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   },
   editorial_lib: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   },
   fk_cat: {
-    type: DataTypes.INTEGER
-  }
-});
+    type: DataTypes.INTEGER,
+  },
+})
 
-// Libro.sync({force: true})
+Libro.sync({ force: true })
 
-module.exports = Libro; 
+module.exports = Libro

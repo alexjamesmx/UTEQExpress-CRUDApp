@@ -13,6 +13,6 @@ const Category = sequelize.define("Category", {
   },
 })
 
-// Category.sync({force: true})
+Category.sync({ force: true })
 
 module.exports = Category
