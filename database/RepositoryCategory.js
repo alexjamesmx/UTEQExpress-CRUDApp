@@ -1,31 +1,30 @@
 const Category = require("./models/Category")
 
-function Repository() {
+function RepositoryCategory() {
   return {
-    create: async (student) => {
-      await Category.create(student)
+    create: async (category) => {
+      await Category.create(category)
     },
+
     getAll: async () => {
       return await Category.findAll()
     },
+
     getById: async (id) => {
-      return Category.findByPk(id)
+      return await Category.findByPk(id)
     },
-    update: async (id, name) => {
-      return await Category.update(name, {
-        where: {
-          category_id: id,
-        },
-      })
+
+    updateById: async (id, category) => {
+      return await Category.update(category, { where: { id } })
     },
-    delete: async (id) => {
-      return await Category.destroy({
-        where: {
-          category_id: id,
-        },
-      })
+
+    deleteById: async (id) => {
+      return await Category.destroy({ where: { id } })
+    },
+    getByName: async (name) => {
+      return await Category.findByName(name)
     },
   }
 }
 
-module.exports = Repository
+module.exports = RepositoryCategory

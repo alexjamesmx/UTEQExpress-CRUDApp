@@ -4,15 +4,6 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const app = express()
 const jwt = require("jsonwebtoken")
-const mysql = require("mysql2")
-
-// const connection = mysql.createConnection(process.env.DATABASE_URL)
-
-// // // simple query
-// connection.query("show tables", function (err, results, fields) {
-//   console.log(results) // results contains rows returned by server
-//   console.log(fields) // fields contains extra metadata about results, if available
-// })
 
 const { obtenerClavePrivada } = require("./key/Clave_privada")
 let clave_privada
@@ -89,5 +80,3 @@ app.listen(process.env.PORT || 3000, () => {
     `Servicio iniciado correctamente en el puerto ${process.env.PORT || 3000}`
   )
 })
-
-// connection.end()

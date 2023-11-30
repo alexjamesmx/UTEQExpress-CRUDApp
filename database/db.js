@@ -1,31 +1,13 @@
-﻿const { Sequelize } = require("sequelize")
+﻿const mysql = require("mysql2")
 
-//conectar a la BD
-const sequelize = new Sequelize(
-  process.env.BD_NAME,
-  process.env.USERNAME,
-  process.env.BD_PASSWORD,
-  {
-    host: process.env.HOST,
-    dialect: "mysql",
-    dialectOptions: {
-      ssl: {
-        rejectUnauthorized: true,
-      },
-    },
-    port: process.env.PORT,
+const connection = mysql.createConnection(process.env.DATABASE_URL)
+
+connection.connect((err) => {
+  if (err) {
+    console.log("Error connecting to Db")
+    return
   }
-)
+  console.log("Connection established")
+})
 
-const open = async () => {
-  await sequelize
-    .authenticate()
-    .then(console.log("Conectado a la BD MySQL local."))
-    .catch((error) => {
-      console.log("Error de conexión:", error)
-    })
-}
-
-open()
-
-module.exports = sequelize
+module.exports = connection
